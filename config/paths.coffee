@@ -1,6 +1,7 @@
 # Path globs
 module.exports =
   app:
+    #the location of all .coffee file
     coffee: [      
       "app/app.coffee"
       "app/**/*controller.coffee"
@@ -49,6 +50,7 @@ module.exports =
   # The build and dist are located outside the project directory.  See Issue
   # https://github.com/malcolmalex/angular-gulp-template/issues/1
   # TODO: Build these other globs from the root
+  ##the location where to store the compiled js file. to agt-build/scripts(?)
   build:
     root: '../agt-build'
     scripts: '../agt-build/scripts'

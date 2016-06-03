@@ -15,13 +15,15 @@ livereload = require('connect-livereload')
 
 # TODO: Handle the movement of config files more gracefully
 EXPRESS_ROOT = __dirname + '/../../agt-build'
-
+console.log "->>>>>>>>>>>>>>>>>EXPRESS_ROOT "
+console.log EXPRESS_ROOT
 module.exports =
   startExpress: ->
     console.log "Configuring Express"
 
     app = express()
     app.use livereload {port: LIVERELOAD_PORT }
+    #static file path serv-static by middle-ware
     app.use express.static EXPRESS_ROOT
     app.listen EXPRESS_PORT
 

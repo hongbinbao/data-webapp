@@ -28,7 +28,9 @@ flatten   = require 'gulp-flatten'
 shell     = require 'gulp-shell'
 
 # Config files for stubbing, path globs, error handling
+#server related define
 server        = require './config/server'
+#project file path define
 paths         = require './config/paths'
 errorHandler  = require './config/errors'
 
@@ -41,6 +43,7 @@ gulp.task 'clean', (cb) ->
 
 # Coffeelint app files that have changed; compile, doc, ngmin, concat all.
 gulp.task 'coffee', ->
+  #location of coffee source code file
   gulp.src paths.app.coffee
     .pipe cache 'coffee-cache'
     .pipe coffeelint './config/coffeelint.json'
@@ -51,16 +54,19 @@ gulp.task 'coffee', ->
       .on 'error', errorHandler.onError
     .pipe ngmin()
     .pipe concat 'app.coffee.js'
+    #where to store the compiled coffee target file
     .pipe gulp.dest paths.build.scripts
 
 # lint app javascript files that have changed; ngmin, concat all.
 gulp.task 'js', ->
+  #location of js source code file
   gulp.src paths.app.scripts
     .pipe jshint()
       .on 'error', errorHandler.onWarning
     .pipe jshint.reporter('default')
     .pipe ngmin()
     .pipe concat 'app.scripts.js'
+    #where to store the compiled js target file
     .pipe gulp.dest paths.build.scripts    
 
 # Lint and compile Less files.
@@ -68,11 +74,13 @@ gulp.task 'js', ->
 # TODO: Just lint my less files, not vendor files
 # FIXME: lint fails here with an error ... why? Result is nothing else runs
 gulp.task 'less', ->
+  #location of stylesheets file
   gulp.src paths.app.stylesheets
     #.pipe lesslint()
     .pipe less()
       .on 'error', errorHandler.onWarning
     .pipe rename 'app.less.css'
+    #where to store the compiled stylesheets file
     .pipe gulp.dest paths.build.stylesheets
     .pipe size()
 
