@@ -15,7 +15,7 @@ templateCache     = require 'gulp-angular-templatecache'
 ngmin             = require 'gulp-ng-annotate'
 imagemin          = require 'gulp-imagemin'
 minifyJS          = require 'gulp-uglify'
-minifyCSS         = require 'gulp-minify-css'
+minifyCSS         = require 'gulp-clean-css'
 jshint            = require 'gulp-jshint'
 refresh           = require 'gulp-livereload'
 

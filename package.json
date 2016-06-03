@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "nodejs bower bootstrap AngularJS project built with Gulp.",
   "main": "gulpfile.js",
+  "engines": {
+    "node": ">=5.0.0"
+  },
   "dependencies": {
     "body-parser": "^1.15.1",
     "cookie-parser": "^1.4.3",
