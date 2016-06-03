@@ -1,0 +1,14 @@
+{
+  "framework": "jasmine",
+  "launch_in_dev": [
+    "Chrome"
+    ],
+  "launch_in_ci" : ["PhantomJS"],
+  "cwd":"../agt-build/scripts",
+  "unsafe_file_serving": true,
+  "src_files": [
+    "app.js",
+    "test.js"
+    ],
+  "serve_files": "test.js"
+}
