@@ -36,26 +36,36 @@ angular.module("SampleApp").config (
   # of using `-` like had to do with linemanJS
   $stateProvider
     .state 'todo',
-      url : "/todo-main"
-      templateUrl : "sample-component/todo-component/todo-main.html"
+        url : "/todo-main"
+        views:
+          todo_area:
+            templateUrl : "sample-component/todo-component/todo-main.html"
 
     .state 'todo.detail',
       url : "/detail"
-      templateUrl : "sample-component/todo-component/todo-detail.html"
-      controller : "TodoController"
+      views:
+        todo_area:
+          templateUrl : "sample-component/todo-component/todo-detail.html"
+          controller : "TodoController"
 
     .state 'accordian',
       url : "/accordian-main"
-      templateUrl : "sample-component/accordian-component/accordian-main.html"
+      views:
+        acc_area:
+          templateUrl : "sample-component/accordian-component/accordian-main.html"
 
     .state 'accordian.detail',
       url : "/detail"
-      templateUrl : "sample-component/accordian-component/accordian-detail.html"
-      controller : "AccordianController"
+      views:
+        acc_area:
+          templateUrl : "sample-component/accordian-component/accordian-detail.html"
+          controller : "AccordianController"
 
     .state 'chart',
       url : '/chart'
-      templateUrl : "sample-component/chart-component/chart-main.html"
-      controller : "ChartController"
+      views:
+        chart_area:
+          templateUrl : "sample-component/chart-component/chart-main.html"
+          controller : "ChartController"
 
   return

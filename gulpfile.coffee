@@ -36,14 +36,13 @@ errorHandler  = require './config/errors'
 
 # Tasks
 
-# Delete folders like dist, build, doc
+# Delete folders like dist, build, doc: 'docs' '../agt-build' '../agt-dist'
 # Callback ensures this completes before additional tasks in a dependency list
 gulp.task 'clean', (cb) ->
   del paths.temp, {force: true}, cb
 
 # Coffeelint app files that have changed; compile, doc, ngmin, concat all.
 gulp.task 'coffee', ->
-  #location of coffee source code file
   gulp.src paths.app.coffee
     .pipe cache 'coffee-cache'
     .pipe coffeelint './config/coffeelint.json'
@@ -171,6 +170,11 @@ gulp.task 'minify:images', ->
 gulp.task 'server', ->
   server.startExpress()
 
+gulp.task 'ioserver', ->
+  server.startIoExpress()
+
+gulp.task 'demoserver', ->
+  server.startDemoExpress()
 ###
 --------------------------------------------
   Test Tasks
@@ -224,7 +228,7 @@ gulp.task 'test', ['concat:test']
 # Convenience tasks providing dependencies
 gulp.task 'concat', ['concat:js', 'concat:css']
 gulp.task 'minify', ['minify:js', 'minify:css', 'minify:images']
-
+# "glup" command will execute the task named by "default" 
 gulp.task 'default', ['build']
 gulp.task 'build', ['coffee', 'js', 'less', 'concat', 'templates', 'copy:build']
 gulp.task 'dist', ['build', 'minify', 'copy:dist']
