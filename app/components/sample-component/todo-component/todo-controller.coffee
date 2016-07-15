@@ -9,7 +9,7 @@ angular.module("SampleApp").controller "TodoController", [
     #      $scope.todos = data
 
     # Restangular retrieval of todos (which uses promises)
-    $scope.todos = Restangular.all('todos').getList().$object
+    $scope.todos = Restangular.all('api/test/todos').getList().$object
 
     # Add a todo, bound to the text-field in view by todoText,
     # and after added reset the todoText to '' to clear it out

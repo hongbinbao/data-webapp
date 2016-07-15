@@ -18,6 +18,10 @@ To run unit tests:
 1. `gulp test`
 2. `testem`
 
+###deploy step
+gulp build
+gulp dist
+gulp demoServer
 
 
 

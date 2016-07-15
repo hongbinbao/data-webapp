@@ -10,7 +10,7 @@ angular.module("SampleApp").controller "ChartController", [
 
     # For the heck of it, get the data from the embedded express server
     # kind of like you might do with a real REST backend.
-    $scope.exampleData = Restangular.all('chartData').getList().$object
+    $scope.exampleData = Restangular.all('/api/test/chartData').getList().$object
 ]
 
 

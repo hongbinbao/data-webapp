@@ -16,12 +16,10 @@
   -->
   <!-- inject:css -->
   <!-- endinject -->
-  <!--link rel="shortcut icon" href="favicon.ico" type="image/x-icon" /-->
   <link rel="stylesheet" type="text/css" href="/stylesheets/app.css" media="all" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  <!--script type="text/javascript" src="/scripts/app.js"></script>
-  <script type="text/javascript" src="/scripts/template-cache.js"></script-->
-
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/template-cache.js"></script>
 </head>
 <body ng-app="SampleApp">
 <div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -40,7 +38,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a id="navbarCollapse" class="navbar-brand" href="#">MiTV</a>
+      <a id="navbarCollapse" class="navbar-brand" href="#">Product</a>
     </div>
     <!-- Note the collapse attribute ... again, for AngularUI's collapse -->
     <div class="collapse navbar-collapse" collapse="isCollapsed">
@@ -51,7 +49,7 @@
         <li ng-class="{active: $state.includes('todo')}"><a ui-sref="todo">Todo</a></li>
         <li ng-class="{active: $state.includes('accordian')}"><a ui-sref="accordian">Accordian</a></li>
         <li ng-class="{active: $state.includes('chart')}"><a ui-sref="chart">Chart</a></li>
-        
+        <li ng-class="{active: $state.includes('test')}"><a ui-sref="test">Test</a></li>
       </ul>
     </div>
   </div>  <!-- container -->
@@ -60,18 +58,18 @@
   <div class="row">
     <div class="col-lg-6">
       <div class="jumbotron text-center">
-        <h2>统计项显示区域</h2>
-        <p class="lead">content <a href="http://gulpjs.com">link</a>  <a href="http://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html">main</a></p>
+        <h2>统计项</h2>
+        <p class="lead">content <a href="http://gulpjs.com">link</a> streaming build system. The application code itself is meant to support small and large projects by following Google's <a href="http://blog.angularjs.org/2014/02/an-angularjs-style-guide-and-best.html">Best Practice Recommendations for Angular App Structure</a></p>
         <p><a class="btn btn-large btn-success" href="http://angularjs.org" target="ext">AngularJS</a></p>
       </div>
-      <h4>严重错误显示区域</h4>
-      <p> t2 <a href="http://getbootstrap.com">bootstrap 3</a> p1 </p>
+      <h4>Layout and Styling, Routing, and additional libraries</h4>
+      <p>This sample utilizes <a href="http://getbootstrap.com">bootstrap 3</a>, providing just a simple sample layout. <a href="http://lesscss.org">LESS</a> is used for managing the CSS, with a main.less that does imports to control order, and separate .less files for mixins and variables, to support isolating customization.  Also included are simple examples of other library use, like ui-router, restangular, and charting directives from angularjs-nvd3-directives.</p>
     </div>
     
     <div class="col-lg-6">
-      <h4>统计指标显示区域</h4>
-      <!--p>Views are handled here by <a href="https://github.com/angular-ui/ui-router">ui-router</a>.  Here are a couple of nested views, as well as a view directly accessed by menubar.  UI-router provides a state machine, nested and
-      parallel views.  Example views are a simple to-do-form, an <a href="http://angular-ui.github.io/bootstrap" target="ext">AngularUI-bootstrap</a> component (accordian), and an nvd3.js chart (<a href="https://github.com/cmaurer/angularjs-nvd3-directives">angularjs-nvd3-directives</a>). </p-->
+      <h4>Routing examples</h4>
+      <p>Views are handled here by <a href="https://github.com/angular-ui/ui-router">ui-router</a>.  Here are a couple of nested views, as well as a view directly accessed by menubar.  UI-router provides a state machine, nested and
+      parallel views.  Example views are a simple to-do-form, an <a href="http://angular-ui.github.io/bootstrap" target="ext">AngularUI-bootstrap</a> component (accordian), and an nvd3.js chart (<a href="https://github.com/cmaurer/angularjs-nvd3-directives">angularjs-nvd3-directives</a>). </p>
 
       <!-- In this example, everything above on the page is template, and the <div> below
            changes based on ui-router states.
@@ -85,7 +83,5 @@
 </div> <!-- /container -->
 <!-- inject:js -->
 <!-- endinject -->
-<script type="text/javascript" src="/scripts/app.js"></script>
-<script type="text/javascript" src="/scripts/template-cache.js"></script>
 </body>
 </html>

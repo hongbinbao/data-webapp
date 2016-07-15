@@ -8,12 +8,14 @@ module.exports =
       "app/**/*directive.coffee"
       "app/**/*filter.coffee"  
       "app/**/*service.coffee"
+      "app/**/*state.coffee"
     ]
     scripts:  [ "app/app.js"
       "app/**/*controller.js"
       "app/**/*directive.js"
       "app/**/*filter.js"  
       "app/**/*service.js"
+      "app/**/*state.js"
     ]
     stylesheets: "app/stylesheets/main.less"
     templates: "app/components/**/*.html"

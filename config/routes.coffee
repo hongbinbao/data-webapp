@@ -7,27 +7,16 @@ module.exports = (app) ->
   return
 
 setupProxyAPIs = (app) ->
-
-  # Import JSON objects from .json files
-  books = require __dirname + '/../data/books'
-  todos = require __dirname + '/../data/todos'
-  chartExampleData = require __dirname + '/../data/chartExampleData'
-
-  # Define URIs for the imported objects, and serve them
-  # TODO: Doc: note that if you change the json stub data, you need to
-  # restart the server at the moment
+  #日志/请求拦截入口
   app.use (req, res, next) ->
-    console.log "middle ware:"
+    console.log "refact middle ware:"
     console.log req.path
     console.log req.url
     console.log req.method
     next()
-
-  app.get '/books', (req, res) ->
-    res.json books
-
-  app.get '/todos', (req, res) ->
-    res.json todos
-
-  app.get '/chartData', (req, res) ->
-    res.json chartExampleData
+  
+  #路由添加入口
+  app.use "/api/test", require("./api/test")
+  #app.use "/api/product", require("./api/product") #backend to provide product version per data
+  #app.use "/api/statistics", require("./api/statistics") #backend to provide statistics per data
+  #app.use "/api/score", require("./api/score") #backend to  provide score per data

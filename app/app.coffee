@@ -1,3 +1,4 @@
+console.log "dddddddddddd"
 angular.module("SampleApp", [
   "ngResource"
   "restangular"
@@ -20,52 +21,10 @@ angular.module("SampleApp", [
   $rootScope.$stateParams = $stateParams
 
 # NOTE: URLS are of the form http://localhost:8000/#/something
-angular.module("SampleApp").config (
-  $stateProvider,
-  $urlRouterProvider,
-  $translateProvider,
-  RestangularProvider) ->
-
+.config ($stateProvider, $urlRouterProvider,$translateProvider, RestangularProvider) ->
   # TODO: At some point, configure translationProvider and test.
-  
   # For any unmatched url, send to /route1
-  $urlRouterProvider.otherwise "/todo-main"
-
-  # TODO: Can gulp glob processing handle multiple periods in filenames?
-  # This would allow templates that are named like nested routes, instead
-  # of using `-` like had to do with linemanJS
   $stateProvider
-    .state 'todo',
-        url : "/todo-main"
-        views:
-          todo_area:
-            templateUrl : "sample-component/todo-component/todo-main.html"
-
-    .state 'todo.detail',
-      url : "/detail"
-      views:
-        todo_area:
-          templateUrl : "sample-component/todo-component/todo-detail.html"
-          controller : "TodoController"
-
-    .state 'accordian',
-      url : "/accordian-main"
-      views:
-        acc_area:
-          templateUrl : "sample-component/accordian-component/accordian-main.html"
-
-    .state 'accordian.detail',
-      url : "/detail"
-      views:
-        acc_area:
-          templateUrl : "sample-component/accordian-component/accordian-detail.html"
-          controller : "AccordianController"
-
-    .state 'chart',
-      url : '/chart'
-      views:
-        chart_area:
-          templateUrl : "sample-component/chart-component/chart-main.html"
-          controller : "ChartController"
-
+    .state("otherwise", { url : '/index'})
+  $urlRouterProvider.otherwise "/index"
   return
