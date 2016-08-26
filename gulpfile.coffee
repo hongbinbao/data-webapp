@@ -147,7 +147,7 @@ gulp.task 'copy:build', ->
 #add by bhb 20160714
 gulp.task 'copy:dist', ->
   console.log '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-  gulp.src ['app/index.html', 'app/favicon.ico']
+  gulp.src [paths.build.root+'/index.html', paths.build.root+'/favicon.ico']
     .pipe gulp.dest paths.dist.root
   gulp.src paths.vendor.fonts
     .pipe gulp.dest paths.dist.fonts
@@ -180,16 +180,21 @@ gulp.task 'minify:images', ->
     .pipe gulp.dest paths.dist.images
     .pipe size()
 
-#add by bhb for css/js min inject auto //20160714
+#inject build js/css by bhb 20160826
+gulp.task 'inject:dev', ->
+  console.log "inject for development mode"
+  #target = gulp.src "app/index.html"
+  target = gulp.src paths.build.root+"/index.html"
+  sources = gulp.src [paths.build.scripts+'/app.js', paths.build.scripts+'/template-cache.js', paths.build.stylesheets+ '/app.css'], {read: false}
+  target.pipe inject sources, {relative: false, ignorePath: paths.build.root}
+            .pipe gulp.dest paths.build.root
 
-gulp.task 'index', ->
-  console.log "index func?"
-  target = gulp.src paths.dist.root + '/index.html'
-  console.log target
-  # It's not necessary to read the files (will speed up things), we're only after their paths: 
-  #sources = gulp.src [paths.dist.scripts+ '/*.js', paths.dist.stylesheets+ '/*.css'], {read: false}
-  sources = gulp.src [paths.dist.scripts+ '/*.js', paths.dist.stylesheets+ '/*.css'], {read: false}
-  target.pipe inject sources, {relative: true}
+#inject build js/css by bhb 20160826
+gulp.task 'inject:prod', ['inject:dev'], ->
+  console.log "inject for product mode"
+  target = gulp.src paths.build.root+"/index.html"
+  sources = gulp.src [paths.dist.scripts+'/app.min.js', paths.dist.stylesheets+ '/app.min.css'], {read: false}
+  target.pipe inject sources, {relative: false, ignorePath: paths.dist.root}
             .pipe gulp.dest paths.dist.root
 
 # Start the development server
@@ -254,13 +259,12 @@ gulp.task 'test', ['concat:test']
 # Convenience tasks providing dependencies
 gulp.task 'concat', ['concat:js', 'concat:css']
 gulp.task 'minify', ['minify:js', 'minify:css', 'minify:images']
-# "glup" command will execute the task named by "default" 
+gulp.task 'inject:all', ['inject:dev','inject:prod']
 
+# "glup" command will execute the task named by "default" 
 gulp.task 'default', ['build']
-gulp.task 'build', ['coffee', 'js', 'less', 'concat', 'templates', 'copy:build']
-gulp.task 'dist', ['build', 'minify', 'copy:dist']
-# 'index'
-#only dist build need to run index task!!!!!!!!
+gulp.task 'build', ['coffee', 'js', 'less', 'concat', 'templates','copy:build']
+gulp.task 'dist', ['build', 'minify', 'copy:dist','inject:all']
 
 gulp.task 'watch', () ->
   gulp.watch paths.app.coffee, ['cleanConcat:js']

@@ -7,8 +7,9 @@
 
 1. `cd data-webapp`
 2. `npm install`
-3. `gulp`
-4. `gulp server`
+3. `gulp` or `gulp build`
+4: `gulp dist`
+5. `gulp demoserver` or `NODE_ENV=product gulp demoserver`
 
 Open your web browser to 127.0.0.1:4000.
 
@@ -21,7 +22,7 @@ To run unit tests:
 ###deploy step
 gulp build
 gulp dist
-gulp demoServer
+gulp demoserver (NODE_ENV=product gulp demoserver)
 
 
 
