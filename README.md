@@ -8,7 +8,7 @@
 1. `cd data-webapp`
 2. `npm install`
 3. `gulp` or `gulp build`
-4: `gulp dist`
+4. `gulp dist`
 5. `gulp demoserver` or `NODE_ENV=product gulp demoserver`
 
 Open your web browser to 127.0.0.1:4000.
