@@ -20,9 +20,9 @@ To run unit tests:
 2. `testem`
 
 ###deploy step
-gulp build
-gulp dist
-gulp demoserver (NODE_ENV=product gulp demoserver)
+1. gulp build
+2. gulp dist
+3. gulp demoserver (NODE_ENV=product gulp demoserver)
 
 
 
